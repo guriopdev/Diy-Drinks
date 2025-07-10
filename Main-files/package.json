@@ -1,0 +1,53 @@
+{
+  "name": "diydrink",
+  "productName": "diydrink",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "echo \"No linting configured\"",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac"
+  },
+    "build": {
+    "appId": "com.gurjyot.matcha",
+    "productName": "Make Your Matcha",
+    "files": [
+      "**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    }
+  },
+  "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "^latest"
+  },
+
+  "keywords": [],
+  "author": "gurjyot",
+  "license": "MIT",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.8.1",
+    "@electron-forge/maker-deb": "^7.8.1",
+    "@electron-forge/maker-rpm": "^7.8.1",
+    "@electron-forge/maker-squirrel": "^7.8.1",
+    "@electron-forge/maker-zip": "^7.8.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.8.1",
+    "@electron-forge/plugin-fuses": "^7.8.1",
+    "@electron/fuses": "^1.8.0",
+    "electron": "37.1.0",
+    "electron-builder": "^26.0.12"
+  }
+}
+
