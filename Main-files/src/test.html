@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body><!-- Example HTML -->
+<div id="timer">00:20</div>
+<input type="checkbox" class="one"> One<br>
+<input type="checkbox" class="two"> Two<br>
+<input type="checkbox" class="three"> Three<br>
+<button class="startBtn" id="startBtn" disabled>Start</button>
+
+<script>
+  const checkboxes = document.querySelectorAll('.one, .two, .three');
+  const startBtn = document.querySelector('.startBtn');
+
+  function checkAllBoxes() {
+    const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+    startBtn.disabled = !allChecked;
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', checkAllBoxes);
+  });
+
+  checkAllBoxes();
+
+  let timeInterval;
+  let timeLeft = 20;
+  let running = false;
+
+  function updateTimerDisplay() {
+    const seconds = String(timeLeft).padStart(2, '0');
+    document.getElementById('timer').textContent = `00:${seconds}`;
+  }
+
+  function hideStartBtn() {
+    startBtn.style.display = 'none';
+  }
+
+  function showStartBtn() {
+    startBtn.style.display = 'block';
+  }
+
+  startBtn.onclick = function () {
+    hideStartBtn();
+    if (running) return;
+    running = true;
+
+    timeInterval = setInterval(() => {
+      if (timeLeft > 0) {
+        timeLeft--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(timeInterval);
+        running = false;
+        showStartBtn();
+      }
+    }, 1000);
+  };
+
+  updateTimerDisplay();
+</script>
+
+
+</body>
+</html>
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+    <link rel="stylesheet" href="matchacompleted.css" />
+  <link rel="stylesheet" href="matchacompleted.css">
+</head>
+<body>
+<div class="rounded-page" style="position: fixed; background-color: #b7ffd9; top: 68px;
+    left: 45px;">
+  <video id="introVideo" autoplay style="left: 56px;
+    position: fixed;
+    top: 31px;
+    height: 322px;
+    width: 470px;
+    border-radius: 20px;">
+    <source src="assest/MAKE YOUR MATCHA NOW (online-video-cutter.com).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+<script>
+    document.getElementById('introVideo').addEventListener('ended', function() {
+        window.location.href = 'index.html'; // Change to your target HTML file
+    });
+</script>
+
+</body>
+</html>

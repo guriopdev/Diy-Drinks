@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="machatimer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+    <nav class="navbar" style="position: absolute;">
+      <ul class="navbar-list">
+        <li><a href="macha.html" class="navbar-btn">Back</a></li>
+        <li><a href="coffee.html" class="navbar-btn">Coffee (Coming Soon)</a></li>
+        <li><a href="aboutme.html" class="navbar-btn">About-Me</a></li>
+      </ul>
+    </nav>
+ <div class="rounded-page" style="position: fixed; background-color: #7be495;">
+
+<img src="assest/6-unscreen.gif"  autoplay loop muted style="display: block; margin: 40px auto; max-width: 90%; border-radius: 16px; left: 127px;
+    height: 231px; top: -69px;; position: fixed;"></img>
+<P style="
+    text-transform: uppercase;
+    position: fixed;
+    font-size: 18px;
+    top: 155px;
+    left: 50px;
+">- Use your wrist (not your arm) to whisk rapidly in a zigzag W or M motion</P>
+<p style="        left: 47px;
+    font-size: 19px;
+    top: 210px;
+    position: fixed;
+    text-transform: uppercase;">- Whisk for about 15–20 seconds until you get a layer of froth</p>
+<div style="text-align: center; margin-top: 270px;">
+  <span id="timer" style="font-size: 2em; font-family: 'Schoolbell', cursive;         left: 291px;
+    top: 258px;
+    position: fixed; color: white;" >00:30</span><br>
+ 
+ 
+ <!-- From Uiverse.io by elijahgummer --> 
+<button class="button-with-icon" id="startBtn" style="margin: 10px;     left: 180px;
+    top: 304px;
+    position: fixed;">
+  <svg
+    class="icon"
+    id="Play"
+    viewBox="0 0 48 48"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      class="color000000 svgShape"
+      fill="#ffffff"
+      d="M12 39c-.549 0-1.095-.15-1.578-.447A3.008 3.008 0 0 1 9 36V12c0-1.041.54-2.007 1.422-2.553a3.014 3.014 0 0 1 2.919-.132l24 12a3.003 3.003 0 0 1 0 5.37l-24 12c-.42.21-.885.315-1.341.315z"
+    ></path>
+  </svg>
+  <span class="text">Play</span>
+</button>
+
+<button class="button-with-icon"  id="pauseBtn" style="margin: 10px; left: 330px;
+    top: 304px;
+    position: fixed;">
+  <svg
+    class="icon"
+    id="Play"
+    viewBox="0 0 48 48"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      class="color000000 svgShape"
+      fill="#ffffff"
+      d="M39.104,6.708c-8.946-8.943-23.449-8.946-32.395,0c-8.946,8.944-8.946,23.447,0,32.394
+				c8.944,8.946,23.449,8.946,32.395,0C48.047,30.156,48.047,15.653,39.104,6.708z M20.051,31.704c0,1.459-1.183,2.64-2.641,2.64
+				s-2.64-1.181-2.64-2.64V14.108c0-1.457,1.182-2.64,2.64-2.64s2.641,1.183,2.641,2.64V31.704z M31.041,31.704
+				c0,1.459-1.183,2.64-2.64,2.64s-2.64-1.181-2.64-2.64V14.108c0-1.457,1.183-2.64,2.64-2.64s2.64,1.183,2.64,2.64V31.704z"
+    ></path>
+  </svg>
+  <span class="text">Pause</span>
+</button>
+
+
+</div>
+<div id="doneBtnContainer" style="text-align: center; margin-top: 20px; display: none;">
+ <!-- From Uiverse.io by Gautammsharma --> 
+<a href="matchacompleted.html"><button class="comic-button" id="doneBtn" style="left: 246px;
+    top: 370px;
+    position: fixed;">Completed</button></a>
+
+</div>
+<script>
+let timerInterval;
+let timeLeft = 20;
+let running = false;
+
+function updateTimerDisplay() {
+  const seconds = String(timeLeft).padStart(2, '0');
+  document.getElementById('timer').textContent = `00:${seconds}`;
+}
+
+document.getElementById('startBtn').onclick = function() {
+  hideDoneButton();
+  if (running) return;
+  running = true;
+  timerInterval = setInterval(() => {
+    if (timeLeft > 0) {
+      timeLeft--;
+      updateTimerDisplay();
+    } else {
+      clearInterval(timerInterval);
+      running = false;
+      showDoneButton();
+    }
+  }, 1000);
+};
+
+document.getElementById('pauseBtn').onclick = function() {
+  clearInterval(timerInterval);
+  running = false;
+};
+
+updateTimerDisplay();
+
+const doneBtnContainer = document.getElementById('doneBtnContainer');
+const doneBtn = document.getElementById('doneBtn');
+
+function showDoneButton() {
+  doneBtnContainer.style.display = 'block';
+}
+
+function hideDoneButton() {
+  doneBtnContainer.style.display = 'none';
+}
+
+doneBtn.onclick = function() {
+  hideDoneButton();
+};
+
+
+</script>
+
+</body>
+</html>
